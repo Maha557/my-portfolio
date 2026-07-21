@@ -1,92 +1,130 @@
-import { motion, useAnimationFrame, useMotionValue, useTransform } from "framer-motion";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { useRef } from "react";
 
 const cards = [
   {
     href: "mailto:mahamzunaira6@gmail.com",
     icon: Mail,
     label: "Email",
-    border: "hsl(var(--primary))",
-    glow: "hsl(var(--primary) / 0.25)",
-    iconColor: "hsl(var(--primary))",
-    from: { x: -80, y: 40, rotate: -12, opacity: 0 },
-    floatDelay: 0,
+    color: "hsl(var(--primary))",
+    glow: "hsl(var(--primary) / 0.22)",
+    delay: 0,
   },
   {
     href: "tel:+923269887466",
     icon: Phone,
     label: "Phone",
-    border: "#a78bfa",
-    glow: "rgba(167,139,250,0.28)",
-    iconColor: "#a78bfa",
-    from: { x: 0, y: 80, rotate: 0, opacity: 0 },
-    floatDelay: 0.4,
+    color: "#8b5cf6",
+    glow: "rgba(139,92,246,.22)",
+    delay: 0.3,
   },
   {
     href: "https://maps.google.com/?q=Lahore,Pakistan",
     icon: MapPin,
     label: "Location",
-    border: "#f472b6",
-    glow: "rgba(244,114,182,0.28)",
-    iconColor: "#f472b6",
-    from: { x: 80, y: 40, rotate: 12, opacity: 0 },
-    floatDelay: 0.8,
+    color: "#ec4899",
+    glow: "rgba(236,72,153,.22)",
+    delay: 0.6,
   },
 ];
 
-const CLOUD_RADIUS = "42% 58% 55% 45% / 48% 44% 56% 52%";
-
-function FloatingCloud({ card, index }: { card: typeof cards[0]; index: number }) {
+function FloatingBubble({
+  card,
+  index,
+}: {
+  card: (typeof cards)[0];
+  index: number;
+}) {
   const Icon = card.icon;
-  const t = useMotionValue(0);
-  const y = useTransform(t, (v) => Math.sin(v + card.floatDelay * Math.PI * 2) * 8);
-  const rotate = useTransform(t, (v) => Math.sin(v * 0.7 + card.floatDelay) * 3);
 
-  useAnimationFrame((time) => {
-    t.set(time / 1800);
+  const time = useMotionValue(0);
+
+  const y = useTransform(time, (v) => Math.sin(v + card.delay) * 6);
+
+  const rotate = useTransform(
+    time,
+    (v) => Math.sin(v * 0.7 + card.delay) * 2
+  );
+
+  useAnimationFrame((t) => {
+    time.set(t / 1700);
   });
 
   return (
     <motion.div
-      className="flex items-center justify-center"
-      initial={card.from}
-      whileInView={{ x: 0, y: 0, rotate: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-60px" }}
+      initial={{
+        opacity: 0,
+        y: 40,
+        scale: 0.8,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      }}
+      viewport={{ once: true }}
       transition={{
-        delay: index * 0.18,
-        duration: 0.9,
-        ease: [0.16, 1, 0.3, 1],
+        delay: index * 0.15,
+        duration: 0.6,
       }}
     >
       <motion.a
         href={card.href}
         target={card.label === "Location" ? "_blank" : undefined}
         rel="noopener noreferrer"
-        aria-label={card.label}
-        className="flex flex-col items-center justify-center gap-2 select-none"
         style={{
           y,
           rotate,
-          width: 110,
-          height: 110,
-          borderRadius: CLOUD_RADIUS,
-          border: `2.5px solid ${card.border}`,
-          background: `radial-gradient(ellipse at center, ${card.glow} 0%, hsl(var(--card)) 70%)`,
-          boxShadow: `0 0 28px ${card.glow}, inset 0 0 18px ${card.glow}`,
-          cursor: "pointer",
+          borderColor: card.color,
+          boxShadow: `0 0 30px ${card.glow}`,
         }}
         whileHover={{
-          scale: 1.18,
-          boxShadow: `0 0 48px ${card.glow}, 0 0 80px ${card.glow}, inset 0 0 24px ${card.glow}`,
+          scale: 1.08,
+          y: -5,
+          boxShadow: `0 0 50px ${card.glow}`,
         }}
-        whileTap={{ scale: 0.92 }}
-        transition={{ type: "spring", stiffness: 320, damping: 18 }}
+        whileTap={{
+          scale: 0.95,
+        }}
+        className="
+          group
+          w-24
+          h-24
+          sm:w-28
+          sm:h-28
+          md:w-32
+          md:h-32
+          rounded-3xl
+          border-2
+          bg-card/70
+          backdrop-blur-xl
+          flex
+          flex-col
+          items-center
+          justify-center
+          gap-2
+          transition-all
+          duration-300
+        "
       >
-        <Icon size={24} strokeWidth={2} style={{ color: card.iconColor }} />
+        <Icon
+          size={28}
+          strokeWidth={2}
+          style={{
+            color: card.color,
+          }}
+        />
+
         <span
-          className="text-[10px] font-bold tracking-widest uppercase"
-          style={{ color: card.border }}
+          className="text-xs font-semibold tracking-wider uppercase"
+          style={{
+            color: card.color,
+          }}
         >
           {card.label}
         </span>
@@ -94,42 +132,69 @@ function FloatingCloud({ card, index }: { card: typeof cards[0]; index: number }
     </motion.div>
   );
 }
-
 export function Contact() {
   return (
-    <section id="contact" className="py-32 max-w-5xl mx-auto px-6 w-full">
+    <section
+      id="contact"
+      className="py-24 max-w-6xl mx-auto px-6"
+    >
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mx-auto"
+        className="max-w-4xl mx-auto"
       >
-        <div className="text-center mb-20">
+        {/* Heading */}
+
+        <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-6 font-serif"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-bold mb-6"
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Get in Touch
           </motion.h2>
+
           <motion.p
-            className="text-muted-foreground text-lg max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.15,
+            }}
+            className="text-muted-foreground text-lg leading-8 max-w-2xl mx-auto"
           >
-            I'm currently looking for new opportunities. Whether you have a question or just
-            want to say hi, I'll try my best to get back to you!
+            I'm currently looking for new opportunities.
+            Feel free to reach out regarding internships,
+            collaborations or full-time opportunities.
+            I'll be happy to connect with you.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-3 gap-10 max-w-sm mx-auto">
-          {cards.map((card, i) => (
-            <FloatingCloud key={card.label} card={card} index={i} />
+        {/* Contact Bubbles */}
+
+        <div
+          className="
+            flex
+            flex-wrap
+            justify-center
+            items-center
+            gap-6
+            sm:gap-8
+            md:gap-10
+          "
+        >
+          {cards.map((card, index) => (
+            <FloatingBubble
+              key={card.label}
+              card={card}
+              index={index}
+            />
           ))}
         </div>
       </motion.div>

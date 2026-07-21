@@ -168,14 +168,19 @@ export function SplashScreen({ onDone }: { onDone: () => void }) {
             />
 
             {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.5, duration: 0.6 }}
-              className="mt-4 text-indigo-400 text-sm md:text-base tracking-[0.35em] uppercase font-light"
-            >
-              AI / ML Engineer &nbsp;&middot;&nbsp; CS Graduate
-            </motion.p>
+<motion.div
+  initial={{ opacity: 0, y: 8 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 2.5, duration: 0.6 }}
+  className="mt-4 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3 text-indigo-400 text-sm md:text-base uppercase font-light tracking-[0.3em]"
+>
+  <span>AI / ML Engineer</span>
+
+  {/* Desktop separator */}
+  <span className="hidden md:inline">&middot;</span>
+
+  <span>CS Graduate</span>
+</motion.div>
 
             {/* Progress bar */}
             <div className="mt-10 w-52 h-[2px] bg-white/5 rounded-full overflow-hidden">

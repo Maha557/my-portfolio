@@ -5,9 +5,17 @@ const categories = [
     label: "AI / Machine Learning",
     accent: "primary",
     skills: [
-      "AI / ML", "Deep Learning", "PyTorch", "TensorFlow", "CNN Models",
-      "Scikit-learn", "Model Fine-Tuning", "Model Evaluation",
-      "AI Model Deployment", "Multimodal AI Systems", "NLP Fundamentals",
+      "AI / ML",
+      "Deep Learning",
+      "PyTorch",
+      "TensorFlow",
+      "CNN Models",
+      "Scikit-learn",
+      "Model Fine-Tuning",
+      "Model Evaluation",
+      "AI Model Deployment",
+      "Multimodal AI Systems",
+      "NLP Fundamentals",
       "Data Preprocessing",
     ],
   },
@@ -15,15 +23,28 @@ const categories = [
     label: "Engineering & Tools",
     accent: "violet",
     skills: [
-      "Python", "C++", "OOP", "FastAPI", "Docker", "CUDA", "OpenCV",
-      "NumPy / SymPy", "Git & GitHub", "matplotlib / seaborn",
+      "Python",
+      "C++",
+      "OOP",
+      "FastAPI",
+      "Docker",
+      "CUDA",
+      "OpenCV",
+      "NumPy / SymPy",
+      "Git & GitHub",
+      "Matplotlib",
+      "Seaborn",
     ],
   },
   {
     label: "Web & Interface",
     accent: "sky",
     skills: [
-      "HTML / Tailwind CSS", "React", "Next.js", "UI / UX Design",
+      "HTML",
+      "Tailwind CSS",
+      "React",
+      "Next.js",
+      "UI / UX Design",
       "API Integration",
     ],
   },
@@ -31,94 +52,136 @@ const categories = [
     label: "Working Style",
     accent: "muted",
     skills: [
-      "Problem-Solving", "Analytical Thinking", "Leadership",
-      "Team Collaboration", "Time Management", "Documentation",
+      "Problem Solving",
+      "Analytical Thinking",
+      "Leadership",
+      "Team Collaboration",
+      "Time Management",
+      "Documentation",
     ],
   },
 ];
 
-// per-category badge style
 const badgeClass: Record<string, string> = {
   primary:
-    "border-primary/25 bg-primary/5 text-foreground hover:bg-primary/12 hover:border-primary/50",
+    "border-primary/30 bg-primary/5 text-foreground hover:bg-primary/15 hover:border-primary",
   violet:
-    "border-violet-400/25 bg-violet-500/5 text-foreground hover:bg-violet-500/10 hover:border-violet-400/50",
+    "border-violet-400/30 bg-violet-500/5 text-foreground hover:bg-violet-500/15 hover:border-violet-400",
   sky:
-    "border-sky-400/25 bg-sky-500/5 text-foreground hover:bg-sky-500/10 hover:border-sky-400/50",
+    "border-sky-400/30 bg-sky-500/5 text-foreground hover:bg-sky-500/15 hover:border-sky-400",
   muted:
-    "border-border bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground hover:border-border",
+    "border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground",
 };
 
 const dotClass: Record<string, string> = {
   primary: "bg-primary",
   violet: "bg-violet-500",
   sky: "bg-sky-500",
-  muted: "bg-muted-foreground/50",
+  muted: "bg-muted-foreground",
 };
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const cardItem = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
 };
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 max-w-5xl mx-auto px-6 w-full">
+    <section
+      id="skills"
+      className="py-24 max-w-6xl mx-auto px-6"
+    >
       {/* Heading */}
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        initial={{ opacity: 0, x: -25 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-14"
+        className="flex items-center gap-5 mb-14"
       >
         <h2
-          className="text-3xl md:text-4xl font-bold text-foreground"
+          className="text-4xl md:text-5xl font-bold"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Skills
         </h2>
+
         <div className="h-[1px] flex-1 bg-border max-w-xs" />
       </motion.div>
 
-      {/* Category grid */}
+      {/* Grid */}
+
       <motion.div
         variants={container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-60px" }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
         {categories.map((cat) => (
           <motion.div
             key={cat.label}
             variants={cardItem}
-            className="group p-6 bg-card border border-border rounded-none hover:border-primary/30 transition-all duration-300"
+            whileHover={{
+              y: -6,
+            }}
+            className="bg-card border border-border rounded-2xl p-7 shadow-sm hover:border-primary/40 hover:shadow-xl transition-all duration-300"
           >
-            {/* Category header */}
-            <div className="flex items-center gap-2 mb-5">
-              <span className={`w-2 h-2 rounded-full shrink-0 ${dotClass[cat.accent]}`} />
-              <h3 className="text-sm font-semibold tracking-wide text-foreground uppercase">
+            {/* Title */}
+
+            <div className="flex items-center gap-3 mb-6">
+              <span
+                className={`w-3 h-3 rounded-full ${dotClass[cat.accent]}`}
+              />
+
+              <h3 className="text-xl font-bold uppercase tracking-wide">
                 {cat.label}
               </h3>
             </div>
 
-            {/* Badges */}
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map((skill, i) => (
+            {/* Skills */}
+
+            <div className="flex flex-wrap gap-3">
+              {cat.skills.map((skill, index) => (
                 <motion.span
                   key={skill}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.85,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.03, duration: 0.25 }}
-                  whileHover={{ y: -2 }}
-                  className={`px-3 py-1.5 text-xs font-medium border rounded-none transition-all duration-200 cursor-default ${badgeClass[cat.accent]}`}
+                  transition={{
+                    delay: index * 0.03,
+                    duration: 0.25,
+                  }}
+                  whileHover={{
+                    scale: 1.08,
+                    y: -3,
+                  }}
+                  className={`px-4 py-2 rounded-full border text-sm md:text-base font-medium cursor-default transition-all duration-200 ${badgeClass[cat.accent]}`}
                 >
                   {skill}
                 </motion.span>
