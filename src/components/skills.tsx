@@ -107,7 +107,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 max-w-6xl mx-auto px-6"
+      className="py-12 md:py-24 max-w-6xl mx-auto px-6"
     >
       {/* Heading */}
 
@@ -116,7 +116,7 @@ export function Skills() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-5 mb-14"
+        className="flex items-center gap-5 mb-8 md:mb-14"
       >
         <h2
           className="text-4xl md:text-5xl font-bold"
@@ -135,7 +135,7 @@ export function Skills() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8"
       >
         {categories.map((cat) => (
           <motion.div
@@ -144,7 +144,7 @@ export function Skills() {
             whileHover={{
               y: -6,
             }}
-            className="bg-card border border-border rounded-2xl p-7 shadow-sm hover:border-primary/40 hover:shadow-xl transition-all duration-300"
+            className="bg-card border border-border rounded-2xl p-5 md:p-7 shadow-sm hover:border-primary/40 hover:shadow-xl transition-all duration-300"
           >
             {/* Title */}
 

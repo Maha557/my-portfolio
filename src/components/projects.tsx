@@ -41,7 +41,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-24 max-w-6xl mx-auto px-6"
+      className="py-12 md:py-24 max-w-6xl mx-auto px-6"
     >
       {/* Heading */}
 
@@ -50,7 +50,7 @@ export function Projects() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-5 mb-14"
+        className="flex items-center gap-5 mb-8 md:mb-14"
       >
         <h2
           className="text-4xl md:text-5xl font-bold"
@@ -64,7 +64,7 @@ export function Projects() {
 
       {/* Projects Grid */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={index}

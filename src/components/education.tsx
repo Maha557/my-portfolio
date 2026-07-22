@@ -4,7 +4,7 @@ export function Education() {
   return (
     <section
       id="education"
-      className="py-24 max-w-6xl mx-auto px-6"
+      className="py-12 md:py-24 max-w-6xl mx-auto px-6"
     >
       {/* Heading */}
 
@@ -13,7 +13,7 @@ export function Education() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-5 mb-14"
+        className="flex items-center gap-5 mb-8 md:mb-14"
       >
         <h2
           className="text-4xl md:text-5xl font-bold"

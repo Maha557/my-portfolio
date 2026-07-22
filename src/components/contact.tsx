@@ -136,7 +136,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 max-w-6xl mx-auto px-6"
+      className="py-12 md:py-24 max-w-6xl mx-auto px-6"
     >
       <motion.div
         initial={{ opacity: 0 }}
