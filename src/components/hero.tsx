@@ -12,7 +12,19 @@ const item = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+    <section
+  className="
+    relative
+    flex
+    items-start
+    lg:items-center
+    min-h-fit
+    lg:min-h-screen
+    pt-20
+    lg:pt-24
+    pb-6
+  "
+>
       <motion.div
         className="max-w-6xl mx-auto px-6 w-full relative z-10"
         variants={container}
@@ -21,9 +33,7 @@ export function Hero() {
       >
         <div className="max-w-3xl">
 
-          {/* Space for flying avatar */}
-          <div style={{ height: 80 }} />
-
+          
           {/* Name label — above heading */}
           <motion.div variants={item} className="mb-6">
             <span
@@ -43,6 +53,7 @@ export function Hero() {
             AI/ML Engineer
             <br />
             <span
+              className=" text-4xl md:text-5xl lg:text-6xl mt-2"
               style={{
                 background: "linear-gradient(120deg, hsl(var(--primary)) 0%, #a78bfa 45%, #f472b6 100%)",
                 WebkitBackgroundClip: "text",
@@ -50,7 +61,7 @@ export function Hero() {
                 backgroundClip: "text",
               }}
             >
-              &amp; CS Graduate
+              Computer Vision & Python Developer
             </span>
           </motion.h1>
 
@@ -67,8 +78,7 @@ export function Hero() {
             variants={item}
             className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl"
           >
-            Building deep learning models for real-world impact — from medical imaging
-            to multimodal AI. Turning research into deployable solutions.
+            Building intelligent AI solutions with Python, Computer Vision, and Deep Learning. Focused on creating scalable, real-world applications that deliver meaningful impact.
           </motion.p>
 
           {/* CTAs */}
@@ -102,18 +112,6 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            variants={item}
-            className="mt-16 flex items-center gap-3 text-muted-foreground/50"
-          >
-            <motion.span
-              className="block w-[1px] h-10 bg-gradient-to-b from-transparent via-primary/40 to-transparent"
-              animate={{ scaleY: [0.5, 1, 0.5], opacity: [0.3, 1, 0.3] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <span className="text-[10px] tracking-[0.25em] uppercase font-mono">Scroll</span>
-          </motion.div>
         </div>
       </motion.div>
     </section>
