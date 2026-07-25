@@ -93,13 +93,13 @@ function FloatingBubble({
         }}
         className="
           group
-          w-24
-          h-24
-          sm:w-28
-          sm:h-28
-          md:w-32
-          md:h-32
-          rounded-3xl
+          w-20
+          h-20
+          sm:w-24
+          sm:h-24
+          md:w-28
+          md:h-28
+          rounded-full
           border-2
           bg-card/70
           backdrop-blur-xl
@@ -107,13 +107,13 @@ function FloatingBubble({
           flex-col
           items-center
           justify-center
-          gap-2
+          gap-1.5
           transition-all
           duration-300
         "
       >
         <Icon
-          size={28}
+          size={24}
           strokeWidth={2}
           style={{
             color: card.color,
@@ -136,7 +136,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-12 md:py-24 max-w-6xl mx-auto px-6"
+      className="py-12 md:py-24 max-w-6xl mx-auto px-4 sm:px-6"
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -184,9 +184,9 @@ export function Contact() {
             flex-wrap
             justify-center
             items-center
-            gap-6
-            sm:gap-8
-            md:gap-10
+            gap-5
+            sm:gap-7
+            md:gap-9
           "
         >
           {cards.map((card, index) => (

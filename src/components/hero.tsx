@@ -53,13 +53,7 @@ export function Hero() {
             AI/ML Engineer
             <br />
             <span
-              className=" text-4xl md:text-5xl lg:text-6xl mt-2"
-              style={{
-                background: "linear-gradient(120deg, hsl(var(--primary)) 0%, #a78bfa 45%, #f472b6 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
+              className="text-4xl md:text-5xl lg:text-6xl mt-2 text-primary"
             >
               Computer Vision & Python Developer
             </span>
@@ -85,7 +79,7 @@ export function Hero() {
           <motion.div variants={item} className="flex flex-col sm:flex-row gap-4">
             <a
               href="#projects"
-              className="group inline-flex items-center justify-center h-12 px-8 text-sm font-medium text-primary-foreground transition-all duration-300 relative overflow-hidden"
+              className="group inline-flex items-center justify-center h-12 px-8 rounded-full text-sm font-medium text-primary-foreground transition-all duration-300 relative overflow-hidden"
               style={{ background: "hsl(var(--primary))" }}
             >
               <span className="relative z-10">View Projects</span>
@@ -98,7 +92,7 @@ export function Hero() {
             <a
               href="/maham-cv.pdf"
               download="Maham_Shezadi_CV.pdf"
-              className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium border border-primary/50 hover:border-primary hover:bg-primary/8 text-primary transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full text-sm font-medium border border-primary/50 hover:border-primary hover:bg-primary/8 text-primary transition-all duration-300"
             >
               <Download size={15} strokeWidth={2} />
               Download CV
@@ -106,7 +100,7 @@ export function Hero() {
 
             <a
               href="#contact"
-              className="inline-flex items-center justify-center h-12 px-8 text-sm font-medium border border-border hover:border-primary/40 hover:bg-primary/5 text-foreground transition-all duration-300"
+              className="inline-flex items-center justify-center h-12 px-8 rounded-full text-sm font-medium border border-border hover:border-primary/40 hover:bg-primary/5 text-foreground transition-all duration-300"
             >
               Get in Touch
             </a>
