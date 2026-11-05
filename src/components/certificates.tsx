@@ -15,6 +15,20 @@ const certificates = [
     description:
       "Learned core Artificial Intelligence concepts including supervised learning, unsupervised learning, machine learning workflows, and real-world AI applications.",
   },
+  {
+    title: "Artificial Intelligence (AI) Internship",
+    issuer: "Devnexes Digital Solutions",
+    date: "Sep 2026",
+    description:
+      "Completed a 1-month remote internship in Artificial Intelligence, demonstrating consistent learning, active task execution, and successful completion of assigned project milestones.",
+  },
+  {
+    title: "Frontend Development Virtual Internship",
+    issuer: "CodeAlpha",
+    date: "Jul 2026 – Aug 2026",
+    description:
+      "Successfully completed the CodeAlpha Virtual Internship Program in Frontend Development, demonstrating dedication and sincerity throughout the program.",
+  },
 ];
 
 export function Certificates() {
